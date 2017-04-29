@@ -1,0 +1,35 @@
+{
+  "name": "news-van-platform",
+  "version": "1.0.0",
+  "description": "Platform for NewsVan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dbuild": "docker build -t my-node-app .",
+    "drun": "docker run -d -it --name=my-node-app-container -p 3000:3000 my-node-app",
+    "dup": "nodemon -x docker-compose up",
+    "mcreate": "docker-machine create --driver amazonec2 aws01",
+    "mconfig": "eval $(docker-machine env aws01)",
+    "mcerts": "mkdir certs && openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/dockerrepo.key -x509 -days 365 -out certs/dockerrepo.crt -subj /CN=local-registry",
+    "mrm": "docker-machine rm aws01",
+    "mip": "docker-machine ip aws01",
+    "mssh": "docker-machine ssh aws01",
+    "mstart": "docker-machine start aws01",
+    "mstop": "docker-machine stop aws01",
+    "ngrok": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/debug-the-future/news-van-platform.git"
+  },
+  "author": "Sean Chatman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/debug-the-future/news-van-platform/issues"
+  },
+  "homepage": "https://github.com/debug-the-future/news-van-platform#readme",
+  "dependencies": {
+    "nodemon": "1.11.0",
+    "ngrok": "2.2.7"
+  }
+}
