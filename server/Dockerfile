@@ -3,6 +3,12 @@ EXPOSE 3000
 COPY . /app
 WORKDIR /app
 
-RUN cd /app; meteor npm install
+RUN curl https://install.meteor.com/ | sh
+
+RUN cd /app
+
+RUN meteor create . --allow-superuser
+
+RUN meteor npm install
 
 CMD ["meteor"]
